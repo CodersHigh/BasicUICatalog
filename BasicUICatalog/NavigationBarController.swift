@@ -11,7 +11,7 @@ import UIKit
 class CatalogController : UITableViewController {
     
     
-    @IBAction func changeGlobalTint(sender: AnyObject) {
+    @IBAction func changeGlobalTint(_ sender: AnyObject) {
         guard let segControl = sender as? UISegmentedControl else {
             return
         }
@@ -20,11 +20,11 @@ class CatalogController : UITableViewController {
         let selectedColor:UIColor?
         switch selectedSegment {
         case 1:
-            selectedColor = UIColor.redColor()
+            selectedColor = UIColor.red
         case 2:
-            selectedColor = UIColor.orangeColor()
+            selectedColor = UIColor.orange
         case 3:
-            selectedColor = UIColor.greenColor()
+            selectedColor = UIColor.green
         default:
             selectedColor = nil
         }
@@ -38,47 +38,47 @@ class NavigationBarController : UITableViewController {
     
     @IBOutlet weak var toolbarSwitch: UISwitch!
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         toggleToolbar(toolbarSwitch)
     }
     
-    @IBAction func changeNavigationBarColor(sender: AnyObject) {
+    @IBAction func changeNavigationBarColor(_ sender: AnyObject) {
         let navigationBar = self.navigationController?.navigationBar
         navigationBar?.backgroundColor = anyColor()
     }
     
-    @IBAction func changeNavigationImage(sender: AnyObject) {
+    @IBAction func changeNavigationImage(_ sender: AnyObject) {
         
     }
     
-    @IBAction func toggleToolbar(sender: AnyObject) {
+    @IBAction func toggleToolbar(_ sender: AnyObject) {
         
-        let toolbarHidden:Bool = toolbarSwitch.on
-        self.navigationController?.toolbarHidden = (toolbarHidden) ? false : true
+        let toolbarHidden:Bool = toolbarSwitch.isOn
+        self.navigationController?.isToolbarHidden = (toolbarHidden) ? false : true
     }
     
-    @IBAction func followNavigationColor(sender: AnyObject) {
+    @IBAction func followNavigationColor(_ sender: AnyObject) {
         let navigationColor = self.navigationController?.navigationBar.backgroundColor
         let toolbar = self.navigationController?.toolbar
         toolbar?.barTintColor = navigationColor
     }
     
     
-    @IBAction func changeToolbarColor(sender: AnyObject) {
+    @IBAction func changeToolbarColor(_ sender: AnyObject) {
         
         
     }
 
-    @IBAction func changeToolbarImage(sender: AnyObject) {
+    @IBAction func changeToolbarImage(_ sender: AnyObject) {
         
         
     }
     
     func anyColor() -> UIColor {
-        let colors : [UIColor] = [UIColor.blueColor(), UIColor.brownColor(), UIColor.redColor(), UIColor.yellowColor(), UIColor.orangeColor(), UIColor.purpleColor(), UIColor.darkGrayColor(), UIColor.greenColor(), UIColor.lightGrayColor(), UIColor.magentaColor()]
+        let colors : [UIColor] = [UIColor.blue, UIColor.brown, UIColor.red, UIColor.yellow, UIColor.orange, UIColor.purple, UIColor.darkGray, UIColor.green, UIColor.lightGray, UIColor.magenta]
         
         
-        let i :Int = Int(NSDate.timeIntervalSinceReferenceDate() % 10)
+        let i :Int = Int(NSDate.timeIntervalSinceReferenceDate.truncatingRemainder(dividingBy: 10))
         return colors[i]
     }
     
